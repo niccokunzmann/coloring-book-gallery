@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "eu.quelltext.coloring",
+    "sha256_cert_fingerprints":
+    ["7D:42:7F:10:43:86:05:AC:23:08:45:3D:D6:BD:B5:74:3D:EA:0B:D0:BC:38:0F:D2:FD:07:0F:EF:BC:DE:D9:14"]
+  }
+}]
