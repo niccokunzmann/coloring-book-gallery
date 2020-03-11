@@ -1,0 +1,53 @@
+
+.image img {
+  max-height: 20em;
+  max-width: 100%;
+  background-color: white;
+  border-radius: 1em;
+}
+
+.license {
+  display: block;
+  font-size: 50%;
+  color: gray;
+}
+
+.image {
+  padding: 0.5em;
+  padding-top: 1em;
+  background-color: #dddddd;
+  border-bottom-color: #aaaaaa;
+  border-bottom-style: solid;
+  border-bottom-width: 0.3em;
+  border-radius: 1em;
+  text-align: center;
+}
+
+main {
+  padding: 0.2em;
+  max-width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header h1 {
+  text-align: center;
+}
+
+header {
+  padding: 0.5em;
+  width: 100%;
+  background-color: #dddddd;
+  border-bottom-color: #aaaaaa;
+  border-bottom-style: solid;
+  border-bottom-width: 0.3em;
+}
+
+body {
+  padding: 0em;
+  margin: 0em;
+}
+
+.description {
+  padding: 0.5em;
+}

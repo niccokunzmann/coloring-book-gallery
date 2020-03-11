@@ -1,26 +1,41 @@
 ---
 ---
 {%- assign language = "en" -%}
+{%- assign en = "en" -%}
 <!DOCTYPE HTML>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="description" content="CoderDojos in Potsdam">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>{{ site.data.strings[language].title }}</title>
+    <title>{{ site.data.strings[language].title | default: site.data.strings[en].title }}</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="icon" type="image/svg+xml" href="https://github.com/niccokunzmann/coloring-book/raw/master/images/logo.svg" />
+    <script type="text/javascript" src="js/applinks.js"></script>
   </head>
   <body>
     <header>
-      <h1>{{ site.data.strings[language].title }}</h1>
+      <h1>{{ site.data.strings[language].title | default: site.data.strings[en].title }}</h1>
     </header>
+    <main>
+    <div class="description">
+      {{ site.data.strings[language].description | default: site.data.strings[en].description }}
+    </div>
+    <div class="images">
     {%- assign images = site.static_files | where_exp: "file", "file.path contains '/images/'" -%}
     {%- for image in images -%}
       <p class="image">
-        <img src="{{ image.path }}" />
+        <a href="{{ image.path }}" class="applink"><img src="{{ image.path }}" /></a>
+        {%- assign splitPath = image.path | split: "/" -%}
+        {%- assign license = splitPath[2] -%}
+        <a href="{{ site.data.strings[language][license] | default: site.data.strings[en][license] }}"
+           class="license" >{{ site.data.strings[language].license | default: site.data.strings[en].license }}</a>
       </p>
     {%- endfor -%}
+    </div>
+    </main>
+    <footer>
+    </footer>
   </body>
 </html>
 

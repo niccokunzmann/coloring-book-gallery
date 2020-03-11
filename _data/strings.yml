@@ -1,2 +1,15 @@
+#
+# For translation yaml documentation, see https://docs.transifex.com/formats/yaml
+# 
 en:
+  # title of the page
   title: Gallery of Black and White Outline Images for Drawing
+  # description of the site
+  description: This is a website which contains black and white outline images ready to be painted. Click on an image to view it. If you have the Coloring Book App installed, you can see an Android logo next to the search field in the Browser. Open the app from there.
+  # link to license - Visit the page to view the license in your language at the bottom.
+  freesvg.org: https://creativecommons.org/publicdomain/zero/1.0/
+  # text of the license link
+  license: License of the image
+  # text of the link to open with an app
+  openWithApp: Open the image in the Coloring Book App
+ 
