@@ -6,12 +6,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="{{ site.data.strings[language].description | default: site.data.strings[en].description }}">
+    <meta name="description" content="{{ site.data.strings[language].description | default: site.data.strings[en].description | escape }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>{{ site.data.strings[language].title | default: site.data.strings[en].title }}</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="icon" type="image/svg+xml" href="https://github.com/niccokunzmann/coloring-book/raw/master/images/logo.svg" />
-    <script type="text/javascript" src="js/applinks.js"></script>
   </head>
   <body>
     <header>
