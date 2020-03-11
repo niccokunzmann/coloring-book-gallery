@@ -11,3 +11,4 @@
   {%- endfor -%}
   "last-modified" : {{ latestChange | jsonify }}
 }
+
