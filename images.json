@@ -1,0 +1,40 @@
+---
+---
+{
+  "images": [
+    {%- assign images = site.static_files | where_exp: "file", "file.path contains '/images/'" -%}
+    {%- assign thumbs = site.static_files | where_exp: "file", "file.path contains '/thumbs/'" -%}
+    {%- for image in images %}
+      {
+      {%- assign imageId = image.path | split: "/" | shift: 2 | join: "/" %}
+      {%- assign licenseId = imageId | split: "/" | first %}
+        "license": {
+          {%- for language in site.data.strings %}
+            {%- if language[1] contains licenseId %}
+              {{ language[0] | jsonify}} : {{ language[1][licenseId] | jsonify }}
+              {%- unless forloop.last %}, {% endunless %}
+            {%- endif %}
+          {%- endfor %}
+        },
+        "id" : {{ imageId | jsonify }},
+        "path" : {{ image.path | jsonify }},
+        "last-modified" : {{ image.modified_time | jsonify }},
+        "thumbnails" : [
+              {% assign hasComma = false %}    
+          {%- for thumb in thumbs %}
+            {%- if thumb.path contains imageId %}
+              {%- if hasComma %}, { {%- else -%} { {%- endif %}
+              {%- assign hasComma = true %}
+              {%- assign maxWidth = thumb.path | split: "/" | shift: 2 | first %}
+                "path" : {{ thumb.path | jsonify}},
+                "max-width" : {{ maxWidth }},
+                "last-modified" : {{ thumb.modified_time | jsonify }}
+              }
+            {%- endif %}
+          {%- endfor %}
+        ]
+      }
+      {%- unless forloop.last %}, {% endunless %}
+    {%- endfor -%}
+  ]
+}

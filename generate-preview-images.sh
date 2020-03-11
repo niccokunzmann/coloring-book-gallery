@@ -40,12 +40,8 @@ find images -iname '*.png' | while read -r image; do
       newHeight=""
     fi
     # create the new file name, see https://stackoverflow.com/a/965072/1320237
-    filename=$(basename -- "$image")
-    extension="${filename##*.}"
-    filename="${filename%.*}"
     path="${image##images/}"
-    path="`dirname \"$path\"`"
-    outputFile="thumbs/$path/$filename-$maxWidth.$extension"
+    outputFile="thumbs/$maxWidth/$path"
     echo "    -> $outputFile at ${userShownWidth}x$userShownHeight"
     mkdir -p "`dirname \"$outputFile\"`"
     convert "$image" -resize "${newWidth}x$newHeight" "$outputFile"
