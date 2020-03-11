@@ -1,6 +1,8 @@
 ---
 ---
 {
+  {%- comment %} Increase the version number  X.Y like this: Smaller number Y if you add features, bigger number X when you remove features. {% endcomment %}
+  "version" : "1.0",
   "images": [
     {%- assign images = site.static_files | where_exp: "file", "file.path contains '/images/'" -%}
     {%- assign thumbs = site.static_files | where_exp: "file", "file.path contains '/thumbs/'" -%}
