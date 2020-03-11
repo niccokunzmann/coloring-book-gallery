@@ -35,6 +35,11 @@
     </div>
     </main>
     <footer>
+      <div class="text">
+        {{ site.data.strings[language].footerText | default: site.data.strings[en].footerText }}
+        |
+        <a href="https://github.com/niccokunzmann/coloring-book-gallery">{{ site.data.strings[language].sourceCode | default: site.data.strings[en].sourceCode }}</a>
+      </div>
     </footer>
   </body>
 </html>

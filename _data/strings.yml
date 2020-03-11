@@ -12,4 +12,7 @@ en:
   license: License of the image
   # text of the link to open with an app
   openWithApp: Open the image in the Coloring Book App
- 
+  # text in the footer
+  footerText: This website is open-source. It should be easy for you to add new images or modify it. Please see the source code for more information.
+  # link to the source code
+  sourceCode: Source Code

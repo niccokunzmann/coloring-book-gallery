@@ -23,7 +23,7 @@
   text-align: center;
 }
 
-main {
+main, footer .text {
   padding: 0.2em;
   max-width: 40em;
   margin-left: auto;
@@ -32,6 +32,9 @@ main {
 
 header h1 {
   text-align: center;
+  padding-right: 2em;
+  padding-left: 2em;
+
 }
 
 header {
@@ -51,3 +54,13 @@ body {
 .description {
   padding: 0.5em;
 }
+
+footer {
+  padding: 0.5em;
+  width: 100%;
+  background-color: #dddddd;
+  border-top-color: #aaaaaa;
+  border-top-style: solid;
+  border-top-width: 0.3em;
+}
+
