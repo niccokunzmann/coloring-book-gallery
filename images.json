@@ -29,6 +29,7 @@
               {%- assign hasComma = true %}
               {%- assign maxWidth = thumb.path | split: "/" | shift: 2 | first %}
                 "path" : {{ thumb.path | jsonify}},
+                "id": {{ thumb.path | split: "/" | shift: 2 | join: "/" | jsonify }},
                 "max-width" : {{ maxWidth }},
                 "last-modified" : {{ thumb.modified_time | jsonify }}
               }
