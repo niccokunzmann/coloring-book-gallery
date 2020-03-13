@@ -2,7 +2,7 @@
 ---
 {
   {%- comment %} Increase the version number  X.Y like this: Smaller number Y if you add features, bigger number X when you remove features. {% endcomment %}
-  "version" : "1.0",
+  "version" : "2.0",
   "images": [
     {%- assign images = site.static_files | where_exp: "file", "file.path contains '/images/'" -%}
     {%- assign thumbs = site.static_files | where_exp: "file", "file.path contains '/thumbs/'" -%}
@@ -20,7 +20,7 @@
         },
         "id" : {{ imageId | jsonify }},
         "path" : {{ image.path | jsonify }},
-        "last-modified" : {{ image.modified_time | jsonify }},
+        "last-modified" : {{ image.modified_time | date_to_xmlschema | jsonify }},
         "thumbnails" : [
               {% assign hasComma = false %}    
           {%- for thumb in thumbs %}
@@ -31,7 +31,7 @@
                 "path" : {{ thumb.path | jsonify}},
                 "id": {{ thumb.path | split: "/" | shift: 2 | join: "/" | jsonify }},
                 "max-width" : {{ maxWidth }},
-                "last-modified" : {{ thumb.modified_time | jsonify }}
+                "last-modified" : {{ thumb.modified_time | date_to_xmlschema | jsonify }}
               }
             {%- endif %}
           {%- endfor %}
