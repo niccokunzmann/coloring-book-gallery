@@ -2,13 +2,14 @@
 ---
 {
   {%- comment %} Increase the version number  X.Y like this: Smaller number Y if you add features, bigger number X when you remove features. {% endcomment %}
-  {%- assign latestChange = "2020-03-10 22:16:41 +0100" %}
+  {%- assign latestChangeString = "2020-03-10T22:16:41+01:00" %}
   "version" : "2.0",
   {% for file in site.static_files %}
     {%- if forloop.first or latestChange > file.modified_time %}
       {%- assign latestChange = file.modified_time %}
+      {%- assign latestChangeString = latestChange | date_to_xmlschema %}
     {%- endif %}
   {%- endfor -%}
-  "last-modified" : {{ latestChange | date_to_xmlschema  | jsonify }}
+  "last-modified" : {{ latestChangeString | jsonify }}
 }
 
