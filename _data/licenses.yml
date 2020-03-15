@@ -1,0 +1,16 @@
+default:
+  url: https://gallery.quelltext.eu
+  text: title
+  source-url: https://gallery.quelltext.eu
+  creator: "Nicco Kunzmann"
+freesvg.org:
+  # the link should be in the strings.yml or a readable text and usable link
+  url: cc-zero-link
+  text: cc-zero-text
+  source-url: https://freesvg.org
+mandala/Circle_Mandala_01:
+  url: cc-by-sa-4.0-link
+  text: cc-by-sa-4.0-text
+  creator: Nevit
+  source-url: https://commons.wikimedia.org/wiki/File:Circle_Mandala_01.svg
+

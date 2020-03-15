@@ -1,21 +1,29 @@
 ---
 ---
+{%- assign en = site.data.strings.en -%}
 {
   {%- comment %} Increase the version number  X.Y like this: Smaller number Y if you add features, bigger number X when you remove features. {% endcomment %}
-  "version" : "2.0",
+  "version" : "2.1",
   "images": [
     {%- assign images = site.static_files | where_exp: "file", "file.path contains '/images/'" -%}
     {%- assign thumbs = site.static_files | where_exp: "file", "file.path contains '/thumbs/'" -%}
     {%- for image in images %}
       {
       {%- assign imageId = image.path | split: "/" | shift: 2 | join: "/" %}
-      {%- assign licenseId = imageId | split: "/" | first %}
+      {%- assign license = site.data.licenses.default %}
+      {%- for license2 in site.data.licenses %}
+        {%- if imageId contains license2[0] %}
+          {%- assign license = license2[1] %}
+        {%- endif %}
+      {%- endfor %}
         "license": {
           {%- for language in site.data.strings %}
-            {%- if language[1] contains licenseId %}
-              {{ language[0] | jsonify}} : {{ language[1][licenseId] | jsonify }}
-              {%- unless forloop.last %}, {% endunless %}
-            {%- endif %}
+            {{ language[0] | jsonify }} : {
+              "url" : {{ language[1][license.url] | default: en[license.url] | default: license.url | jsonify }},
+              "text" : {{ language[1][license.text] | default: en[license.text] | default: license.text | jsonify }},
+              "source-url" : {{ language[1][license["source-url"]] | default: en[license["source-url"]] | default: license["source-url"] | jsonify }},
+              "creator" : {{ language[1][license.creator] | default: en[license.creator] | default: license.creator | jsonify }}
+            }
           {%- endfor %}
         },
         "id" : {{ imageId | jsonify }},

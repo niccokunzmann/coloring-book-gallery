@@ -1,43 +1,59 @@
 ---
 ---
-{%- assign language = "en" -%}
-{%- assign en = "en" -%}
+{%- assign language = site.data.strings.en -%}
+{%- assign en = site.data.strings.en -%}
 <!DOCTYPE HTML>
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="{{ site.data.strings[language].description | default: site.data.strings[en].description | escape }}">
+    <meta name="description" content="{{ language.description | default: en.description | escape }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>{{ site.data.strings[language].title | default: site.data.strings[en].title }}</title>
+    <title>{{ language.title | default: en.title }}</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="icon" type="image/svg+xml" href="https://github.com/niccokunzmann/coloring-book/raw/master/images/logo.svg" />
   </head>
   <body>
     <header>
-      <h1>{{ site.data.strings[language].title | default: site.data.strings[en].title }}</h1>
+      <h1>{{ language.title | default: en.title }}</h1>
     </header>
     <main>
     <div class="description">
-      {{ site.data.strings[language].description | default: site.data.strings[en].description }}
+      {{ language.description | default: en.description }}
     </div>
     <div class="images">
     {%- assign images = site.static_files | where_exp: "file", "file.path contains '/images/'" -%}
-    {%- for image in images -%}
-      <p class="image">
+    {%- for image in images %}
+      <div class="image">
         <a href="{{ image.path }}" class="applink"><img src="{{ image.path }}" /></a>
+        {%- assign imageId = image.path | split: "/" | shift: 2 | join: "/" %}
         {%- assign splitPath = image.path | split: "/" -%}
-        {%- assign license = splitPath[2] -%}
-        <a href="{{ site.data.strings[language][license] | default: site.data.strings[en][license] }}"
-           class="license" >{{ site.data.strings[language].license | default: site.data.strings[en].license }}</a>
-      </p>
+        {%- assign license = site.data.licenses.default %}
+        {%- for license2 in site.data.licenses %}
+          {%- if imageId contains license2[0] %}
+            {%- assign license = license2[1] %}
+          {%- endif %}
+        {%- endfor %}
+        <div class="license">
+          <a href="{{ license['source-url'] | default: '' }}">
+            {%- if license['source-url'] -%}
+              {{ license.creator | default: language["image-source"] | default: en["image-source"] }}
+            {%- else -%}
+              {{ license.creator | default: "" }}
+            {%- endif -%}
+          </a> | 
+          <a href="{{ language[license.url] | default: en[license.url] | default: license.url | default: '' }}" >
+             {{- language[license.text] | default: en[license.text] | default: license.text | default: language["view-license"] | en["view-license"] | escape -}}
+          </a>
+        </div>
+      </div>
     {%- endfor -%}
     </div>
     </main>
     <footer>
       <div class="text">
-        {{ site.data.strings[language].footerText | default: site.data.strings[en].footerText }}
+        {{ language.footerText | default: en.footerText }}
         |
-        <a href="https://github.com/niccokunzmann/coloring-book-gallery">{{ site.data.strings[language].sourceCode | default: site.data.strings[en].sourceCode }}</a>
+        <a href="https://github.com/niccokunzmann/coloring-book-gallery">{{ language.sourceCode | default: en.sourceCode }}</a>
       </div>
     </footer>
   </body>

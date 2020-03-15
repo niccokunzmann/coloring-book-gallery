@@ -6,13 +6,25 @@ en:
   title: Gallery of Black and White Outline Images for Drawing
   # description of the site
   description: This is a website which contains black and white outline images ready to be painted. Click on an image to view it. If you have the Coloring Book App installed, you can see an Android logo next to the search field in the Browser. Open the app from there.
-  # link to license - Visit the page to view the license in your language at the bottom.
-  freesvg.org: https://creativecommons.org/publicdomain/zero/1.0/
-  # text of the license link
-  license: License of the image
   # text of the link to open with an app
   openWithApp: Open the image in the Coloring Book App
   # text in the footer
   footerText: This website is open-source. It should be easy for you to add new images or modify it. Please see the source code for more information.
   # link to the source code
   sourceCode: Source Code
+  # text below the image if the image has no creator
+  image-source: Visit Source
+  # text below the image linking to the license
+  view-license: View License
+
+# Licenses
+  # license - CC-0 - Visit the page to view the license in your language at the bottom. This is the link.
+  cc-zero-link: https://creativecommons.org/publicdomain/zero/1.0/
+  # license - CC-0 - Visit the page to view the license in your language at the bottom. This is the title.
+  cc-zero-text: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+
+  # license - CC-0 - Visit the page to view the license in your language at the bottom. This is the link.
+  cc-by-sa-4.0-link: https://creativecommons.org/licenses/by-sa/4.0
+  # license - CC-0 - Visit the page to view the license in your language at the bottom. This is the title.
+  cc-by-sa-4.0-text: CC BY-SA
+
