@@ -42,7 +42,7 @@
             {%- endif -%}
           </a> | 
           <a href="{{ language[license.url] | default: en[license.url] | default: license.url | default: '' }}" >
-             {{- language[license.text] | default: en[license.text] | default: license.text | default: language["view-license"] | en["view-license"] | escape -}}
+             {{ language[license.text] | default: en[license.text] | default: license.text | default: language["view-license"] | default: en["view-license"] | escape }}
           </a>
         </div>
       </div>

@@ -5,7 +5,7 @@
   {%- assign latestChangeString = "2020-03-10T22:16:41+01:00" %}
   "version" : "2.0",
   {% for file in site.static_files %}
-    {%- if forloop.first or latestChange > file.modified_time %}
+    {%- if forloop.first or latestChange < file.modified_time %}
       {%- assign latestChange = file.modified_time %}
       {%- assign latestChangeString = latestChange | date_to_xmlschema %}
     {%- endif %}
